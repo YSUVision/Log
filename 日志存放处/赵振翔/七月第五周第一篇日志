@@ -1,0 +1,31 @@
+## 函数拟合
+
+### 学习内容
+
+构建已知量 T（矩阵） Y（向量），进行赋值
+
+`gsl_matrix *TtT = gsl_matrix_alloc(p, p)`    p×p的矩阵 3×3
+
+`T` 是第一个输入矩阵 `T` 是第二个输入矩阵
+
+`gsl_matrix_set(R, 0, 0, lambda)`设置矩阵R的第 0 行、第 0 列为lambda
+
+`gsl_blas_dgemv(CblasTrans, 1.0, T, Y, 0.0, TtY)`  矩阵×向量 
+
+`gsl_linalg_LU_solve(TtT, perm, TtY, beta)`  解矩阵方程 解出 a，b，c
+
+beta 储存
+
+a，b，c是二次函数系数，通过最小化残差平方和确定
+
+传入目标时间，返回`return a*aim_time * aim_time + b*aim_time + c`预测值
+
+正则化参数：希望得到二次函数，合适的拟合程度 （R 加到 TtT 上）
+
+### 遇到问题
+
+不是很了解一些函数的作用和一些名词的含义
+
+### 总结问题
+
+需要了解更多相关内容，理解代码
